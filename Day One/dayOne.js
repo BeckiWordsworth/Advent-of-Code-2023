@@ -1,16 +1,5 @@
 const fs = require('fs')
-
-fs.readFile('input.txt', 'utf8' , (err, data) => {
-  if (err) {
-    console.error(err)
-    return
-  }
-  const input = data.split("\n")
-  const answerOne = partOne(input);
-  const answerTwo = partTwo(input);
-  console.log(answerOne);
-  console.log(answerTwo);
-});
+const input = fs.readFileSync("./input.txt", "utf8").split("\n")
 
 const partOne = (input) => {
     let total = 0;
@@ -28,14 +17,13 @@ const partOne = (input) => {
                 rightNum = num;
             }
         }
-
         rowNumber = (leftNum * 10) + rightNum;
         total += rowNumber;
     });
     return total;
 };
 
-const numbersMap = {
+const numbersDic = {
     "zero": 0,
     "one": 1,
     "two": 2,
@@ -47,7 +35,6 @@ const numbersMap = {
     "eight": 8,
     "nine": 9,
 }
-
 
 const partTwo = (input) => {
     let total = 0;
@@ -66,18 +53,20 @@ const partTwo = (input) => {
             } else {
                 for(let j = i; j <= 5 + i; j++) {
                     let str = row.substring(i, j);
-                    if(numbersMap[str]) {
+                    if(numbersDic[str]) {
                         if(leftNum == null) {
-                            leftNum = numbersMap[str];
+                            leftNum = numbersDic[str];
                         }
-                        rightNum = numbersMap[str];
+                        rightNum = numbersDic[str];
                     }
                 }
             }
         }
-
         rowNumber = (leftNum * 10) + rightNum;
         total += rowNumber;
     });
     return total;
 };
+
+console.log(partOne(input));
+console.log(partTwo(input));
