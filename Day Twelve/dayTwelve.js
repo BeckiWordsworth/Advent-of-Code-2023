@@ -32,12 +32,11 @@ const getNumArrangements = (springStr, damaged) => {
 
 const part1 = () => {
   const springs = inputToSprings(input);
-let sum = 0;
-for (const spring of springs) {
-  sum += getNumArrangements(spring.springStr, spring.damaged);
+  let sum = 0;
+  for (const spring of springs) {
+    sum += getNumArrangements(spring.springStr, spring.damaged);
 }
 return sum
 }
-
 
 console.log(part1())
