@@ -39,4 +39,25 @@ const part1 = () => {
 return sum
 }
 
+// part 2
+// const memoize = (fn, cache = new Map()) => {
+//   return (...args) => {
+//     const key = JSON.stringify(args);
+//     if (cache.has(key)) return cache.get(key);
+//     const result = fn(...args);
+//     cache.set(key, result);
+//     return result;
+//   }
+// }
+
+// getNumArrangements = memoize(getNumArrangements);
+
+// let sumP2 = 0;
+// for (const spring of springs) {
+//   const springStr = Array(5).fill(spring.springStr).join('?');
+//   const damaged = Array(5).fill(spring.damaged).flat();
+//   sumP2 += getNumArrangements(springStr, damaged);
+// }
+// console.log(sumP2);
+
 console.log(part1())
